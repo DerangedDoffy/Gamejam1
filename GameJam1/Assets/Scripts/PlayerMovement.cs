@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDrag;
 
+<<<<<<< HEAD
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
+=======
+>>>>>>> parent of 2d42beb (added jumpkey)
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -66,16 +69,6 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
-        // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
-        {
-            readyToJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
     }
 
     private void MovePlayer()
@@ -84,13 +77,7 @@ public class PlayerMovement : MonoBehaviour
         // go in direction you're looking
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        // on ground
-        if(grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
-        // in air
-        else if(!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 
     private void SpeedControl()
@@ -104,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
+<<<<<<< HEAD
 
     private void Jump()
     {
@@ -117,4 +105,6 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+=======
+>>>>>>> parent of 2d42beb (added jumpkey)
 }
