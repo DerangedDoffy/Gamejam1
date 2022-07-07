@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
+    [HideInInspector] public float walkSpeed;
+    [HideInInspector] public float sprintSpeed;
+
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
@@ -35,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        readyToJump = true;
     }
 
     private void Update()
@@ -52,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         MovePlayer();
     }
@@ -96,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         if(flatVel.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.veloctiy.y, lmitedVel.z);
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
 
@@ -107,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+
     private void ResetJump()
     {
         readyToJump = true;
