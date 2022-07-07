@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     float playerHeight = 2f;
 
+    [SerializeField] Transform orientation;
+
     [Header("Movement")]
     public float moveSpeed = 6f; 
     float movementMultiplier = 10f;
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
-        moveDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
+        moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     } 
 
     void Jump()
