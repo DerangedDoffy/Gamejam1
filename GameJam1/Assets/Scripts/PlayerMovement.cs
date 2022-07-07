@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDrag;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
+=======
+>>>>>>> parent of 2d42beb (added jumpkey)
 =======
 >>>>>>> parent of 2d42beb (added jumpkey)
     [Header("Ground Check")]
@@ -92,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     private void Jump()
     {
@@ -105,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+=======
+>>>>>>> parent of 2d42beb (added jumpkey)
 =======
 >>>>>>> parent of 2d42beb (added jumpkey)
 }
