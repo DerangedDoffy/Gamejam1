@@ -17,6 +17,8 @@ public class ProjectileGun : MonoBehaviour
     int bulletsLeft, bulletsShot;
 
     // Recoil
+    public Rigidbody playerRb;
+    public float recoilForce;
 
     // bools 
     bool shooting, readyToShoot, reloading;
@@ -31,6 +33,14 @@ public class ProjectileGun : MonoBehaviour
 
     // Bug fixing :D
     public bool allowInvoke = true;
+
+    // Audio Source
+    AudioSource m_shootingSound;
+
+    void Start()
+    {
+        m_shootingSound = GetComponent<AudioSource>();
+    }
 
     private void Awake()
     {
@@ -65,6 +75,8 @@ public class ProjectileGun : MonoBehaviour
             bulletsShot = 0;
 
             Shoot();
+
+            m_shootingSound.Play();
         }
     }
 
