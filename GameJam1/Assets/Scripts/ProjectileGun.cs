@@ -16,6 +16,8 @@ public class ProjectileGun : MonoBehaviour
 
     int bulletsLeft, bulletsShot;
 
+    // Recoil
+
     // bools 
     bool shooting, readyToShoot, reloading;
 
