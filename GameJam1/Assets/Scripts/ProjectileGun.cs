@@ -125,6 +125,9 @@ public class ProjectileGun : MonoBehaviour
         {
             Invoke("ResetShot", timeBetweenShooting);
             allowInvoke = false;
+
+            // Add recoil to player
+            playerRb.AddForce(-directionWithSpread.normalized * recoilForce, ForceMode.Impulse);
         }
 
         // If more than one bulletsPerTap make sure to repeat shoot function
