@@ -22,14 +22,16 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Jumping")]
     public float jumpForce = 5f;
+    private bool isJumpOnCooldown = false;
+    private float jumpDelay = 0f;
 
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
 
     [Header("Drag")]
-    [SerializeField]float groundDrag = 6f;
-    [SerializeField]float airDrag = 2f;
+    [SerializeField]float drag = 6f;
+    // [SerializeField]float airDrag = 2f;
 
     float horizontalMovement;
     float verticalMovement; 
@@ -76,12 +78,10 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         ControlDrag();
         ControlSpeed();
-
-        if (Input.GetKeyDown(jumpKey) && isGrounded)
-        {
+        if (Input.GetKey(jumpKey) && isGrounded){
             Jump();
         }
-        
+        CheckJumpCooldown();
         slopMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
     }
 
@@ -93,18 +93,29 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     } 
 
-    void Jump()
+    private void Jump()
     {
-        if (isGrounded)
-        {
+        if(!isJumpOnCooldown) {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            isJumpOnCooldown = true;
+        } 
+    }
+
+    private void CheckJumpCooldown() {
+        if(isJumpOnCooldown) {
+            if(jumpDelay < 5f) {
+                jumpDelay++;
+            } else {
+                isJumpOnCooldown = false;
+                jumpDelay = 0f;
+            }
         }
     }
 
     void ControlSpeed()
     {
-        if (Input.GetKey(sprintKey) && isGrounded)
+        if (Input.GetKey(sprintKey))
         {
             moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
             CameraShaker.Instance.ShakeOnce(0.3f, 0.2f, .1f, 1f);
@@ -117,16 +128,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void ControlDrag()
+    private void ControlDrag() 
     {
-        if (isGrounded) 
-        {
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = airDrag;
-        }
+        
+        rb.drag = drag;
     }
 
     private void FixedUpdate()
