@@ -12,9 +12,7 @@ public class WallRun : MonoBehaviour
     [SerializeField] private float minimumJumpHeight = 1.5f;
 
     [Header("Wall Running")]
-    [SerializeField] private float wallRunGravity;
     [SerializeField] private float wallRunJumpForce;
-    // new 7/10/22
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private LayerMask whatIsGround;
 
@@ -82,8 +80,6 @@ public class WallRun : MonoBehaviour
     void StartWallRun()
     {
         rb.useGravity = false;
-
-        rb.AddForce(Vector3.down * wallRunGravity, ForceMode.Force);
 
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, wallRunfov, wallRunfovTime * Time.deltaTime);
 
