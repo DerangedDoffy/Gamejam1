@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class RestartLevel : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform repsawnPoint;
+
+    void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        player.transform.position = repsawnPoint.transform.position;
     }
 }

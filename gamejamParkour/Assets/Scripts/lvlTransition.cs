@@ -7,9 +7,11 @@ public class lvlTransition : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.name == "PortalBlock")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            Debug.Log("Portal collision is true");
         }
     }
 }
