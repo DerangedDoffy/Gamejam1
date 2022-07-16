@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using EZCameraShake;
 
 public class PlayerMovement : MonoBehaviour
 
@@ -75,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     private void ControlSpeed() {
         if (Input.GetKey(SPRINT_KEY)) {
             moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
-            //CameraShaker.Instance.ShakeOnce(0.3f, 0.2f, .1f, 1f);
         } else {
             moveSpeed = Mathf.Lerp(moveSpeed, walkspeed, acceleration * Time.deltaTime);
         }
