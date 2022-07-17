@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private void CheckJumpCooldown() {
-        if (jumpDelay < 5f) {
+        if (jumpDelay < 10f) {
             jumpDelay++;
         } else {
             isJumpOnCooldown = false;
