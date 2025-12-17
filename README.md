@@ -1,3 +1,3 @@
 # First Game Jam
 
-https://derangeddoffy.itch.io/kyohop
+Go to this link to install the game: https://derangeddoffy.itch.io/kyohop
