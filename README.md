@@ -7,4 +7,4 @@ Kyohop is a first-person 3D platformer where players must navigate a mysterious 
 
 #
 
-<img width="347" height="262" alt="image" src="https://github.com/user-attachments/assets/d28e99df-f0dd-4d80-ab3b-9ac519875bb3" />
+![Desktop 2025 12 17 - 15 25 08 01 - Trim](https://github.com/user-attachments/assets/a4566f00-3cad-407c-ab27-be1fa8495533)
